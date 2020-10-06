@@ -1,0 +1,2 @@
+export const SET_SELECTED_BOOK = "SET_SELECTED_BOOK";
+export const SET_BEST_OFFER = "SET_BEST_OFFER";

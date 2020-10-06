@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to this Henri Pottier project bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
