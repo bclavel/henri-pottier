@@ -4,16 +4,19 @@ import Navbar from './components/navbar/Navbar.component';
 import Footer from './components/footer/Footer.component'
 import Home from "./views/home/Home.compnent";
 import Cart from "./views/cart/Cart.component";
+import BooksState from './context/books/BooksState';
 
 const App = () => {
   return (
     <Router>
+      <BooksState>
         <Navbar />
         <Switch>
           <Route exact={true} path="/" component={Home} />
           <Route exact={true} path="/cart" component={Cart} />
         </Switch>
         <Footer />
+      </BooksState>
     </Router>
   );
 }
