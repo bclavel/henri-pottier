@@ -1,4 +1,4 @@
-import { SET_BEST_OFFER } from "../types/types.js";
+import { SET_BEST_OFFER, GET_OFFERS } from "../types/types.js";
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,6 +6,11 @@ export default (state, action) => {
       return {
         ...state,
         bestOffer: action.payload
+      };
+    case GET_OFFERS:
+      return {
+        ...state,
+        offers: action.payload
       };
     default:
       return state;

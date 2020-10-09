@@ -1,4 +1,5 @@
 const baseUrl =  "http://henri-potier.xebia.fr/books";
+const commercialOffersUrl =  "commercialOffers";
 
 // export const getBooksListz = async () => {
 //   try {
@@ -22,4 +23,10 @@ const getBooksData = (url) => {
 export const getBooksList = () => {
   let books = getBooksData(baseUrl)
   return books
+}
+
+export const getOffersList = (selectedBooksIds) => {
+  let offersUrl = [baseUrl, selectedBooksIds, commercialOffersUrl].join('/')
+  let offers = getBooksData(offersUrl)
+  return offers
 }
