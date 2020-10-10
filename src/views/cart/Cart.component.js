@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Cart.component.css";
 import BookInCart from '../../components/bookInCart/BookInCart.component'
+import Navbar from '../../components/navbar/Navbar.component';
 import BooksContext from '../../context/books/BooksContext'
 import OffersContext from '../../context/offers/OffersContext'
 
@@ -40,6 +41,7 @@ const Cart = () => {
   return (
       <div className="container-content">
         <h1>Henri Pottier - Cart</h1>
+        <Navbar />
         {selectedBooks.length > 0 ? selectedBooks.map(item => (
           <BookInCart order={item} key={item.book.isbn} />
         ))

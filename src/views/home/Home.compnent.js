@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Home.component.css";
-import BookCard from '../../components/bookCard/BookCard.component'
+import Navbar from '../../components/navbar/Navbar.component';
+import Book from '../../components/book/Book.component'
 import BooksContext from '../../context/books/BooksContext'
 
 const Home = () => {
@@ -21,14 +22,17 @@ const Home = () => {
   // console.log('Home books from context', books)
 
   return (
-      <div className="container-content">
-        <h1>Henri Pottier - Home</h1>
-        {!state.loading ? books.map(item => (
-           <BookCard book={item} key={item.isbn} />
-        ))
-        :
-        <p>Loading...</p>
-        }
+      <div className="main-container">
+        <h1>Bienvenue dans la boutique Henri Pottier</h1>
+        <Navbar />
+        <div className="books-container">
+          {!state.loading ? books.map(item => (
+            <Book book={item} key={item.isbn} />
+          ))
+          :
+          <p>Loading...</p>
+          }
+        </div>
       </div>
   );
 };
