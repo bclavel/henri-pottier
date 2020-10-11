@@ -11,15 +11,14 @@ const Home = () => {
 
   const initialState = {
     loading: true
-  }
-  const [state, setState] = useState(initialState)
+  };
+  const [state, setState] = useState(initialState);
 
+  // Au 1er render du composant, lance la fonction de récupération de la liste des livres dans l'API
   useEffect(() => {
     setBooksList()
     setState({loading: false})
-  }, [])
-
-  // console.log('Home books from context', books)
+  }, []);
 
   return (
       <div className="main-container">

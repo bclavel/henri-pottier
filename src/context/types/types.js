@@ -1,6 +1,4 @@
-export const SET_SELECTED_BOOKS = "SET_SELECTED_BOOKS";
 export const SET_BOOKS_LIST = "SET_BOOKS_LIST";
 export const ADD_ORDER_CART = "ADD_ORDER_CART";
 export const REMOVE_ORDER_CART = "REMOVE_ORDER_CART";
 export const SET_BEST_OFFER = "SET_BEST_OFFER";
-export const GET_OFFERS = "GET_OFFERS";

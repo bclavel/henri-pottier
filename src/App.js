@@ -20,6 +20,6 @@ const App = () => {
       </BooksState>
     </Router>
   );
-}
+};
 
 export default App;

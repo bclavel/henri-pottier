@@ -10,11 +10,27 @@ const Book = props => {
   const initialState = {
     book: props.book,
     quantity: 1
+  };
+
+  const [order, setOrder] = useState(initialState);
+  const [confirm, setConfirm] = useState(false);
+
+  const shortSynopsis = props.book.synopsis.join(' ').substring(0,300) + '...';
+
+  // Fonction qui met à jour le state du confirm
+  const displayConfirm = (bool) => {
+    setConfirm(bool)
   }
 
-  const [order, setOrder] = useState(initialState)
+  // Fonction qui ajoute le livre au panier + déclenche l'affichage du message de confirmation pendant 3 secondes
+  const handleAddToCart = () => {
+    addOrderToCart(order)
+    displayConfirm(true)
 
-  const shortSynopsis = props.book.synopsis.join(' ').substring(0,300) + '...'
+    setTimeout(() => {
+      displayConfirm(false)
+    }, 3000)
+  }
 
   return (
     <div className="book">
@@ -23,6 +39,7 @@ const Book = props => {
         <h3 className="book__title">{props.book.title}</h3>
         <p className="book__synopsis">{shortSynopsis}</p>
         <p className="book__price">Prix : <span className="book__price-tag">{props.book.price}€</span></p>
+        {!confirm ? 
         <div className="book__quantity">
           <label className="book__quantity" htmlFor="quantity">Quantité :</label>
           <select name="quantity" className="book__select" onChange={event => setOrder({book: props.book, quantity: event.target.value})}> 
@@ -38,7 +55,10 @@ const Book = props => {
             <option value="10">10</option>
           </select>
         </div>
-        <button className="book__addtocart" onClick={() => addOrderToCart(order)}>Ajouter au panier</button>
+        :
+        <p className="book__confirm">Ajouté à votre panier !</p>
+        }
+        <button className="book__addtocart" onClick={() => handleAddToCart()}>Ajouter au panier</button>
       </div>
     </div>
   );

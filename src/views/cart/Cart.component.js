@@ -11,51 +11,46 @@ const Cart = () => {
   const { selectedBooks } = booksContext;
 
   const offersContext = useContext(OffersContext);
-  const { offers, getOffers, setBestOffer, bestOffer } = offersContext;
-
-  // console.log('CART offers >>', offers)
+  const { setBestOffer, bestOffer } = offersContext;
 
   const initialState = {
-    loading: true,
     totalCart: 0
-  }
-  const [state, setState] = useState(initialState)
+  };
 
+  const [state, setState] = useState(initialState);
+ 
+  // A chaque fois que le panier change, récupère la liste des livres à envoyer à l'API pour récupérer la meilleure offre + recalcule le total du panier
   useEffect(() => {
-    if (selectedBooks.length > 0) {
-      //  console.log('CART selectedBooks >>', selectedBooks)
-      
-      // getOffers(selectedBooksIds)
-    }
-  }, [])
-  
-  useEffect(() => {
-    // console.log('Useffect OFFERS !!', offers)
     const selectedBooksIds = selectedBooks.map(item => item.book.isbn).join(',')
     const totalCart = selectedBooks.map(item => item.book.price * item.quantity).reduce((acc, curr) => acc + curr, 0)
-    setState({loading: false, totalCart: totalCart})
+    setState({totalCart: totalCart})
     setBestOffer(selectedBooksIds, totalCart)
-
-  }, [selectedBooks])
+  }, [selectedBooks]);
 
   return (
       <div className="container-content">
-        <h1>Henri Pottier - Cart</h1>
+        <h1>Votre panier</h1>
         <Navbar />
-        {selectedBooks.length > 0 ? selectedBooks.map(item => (
-          <BookInCart order={item} key={item.book.isbn} />
-        ))
-        :
-        <p>Le panier est vide</p>
-        }
-        <div className="cart__total">
-          <p>
-            Total : {state.totalCart} €
-          </p>
-          <p>
-            Total après remise : {bestOffer} €
-          </p>
+        <div className="cart__items">
+          {selectedBooks.length > 0 ? selectedBooks.map((item, i) => (
+            <BookInCart order={item} key={i} />
+          ))
+          :
+          <p className="cart__empty">Le panier est vide</p>
+          }
         </div>
+        {selectedBooks.length > 0 ? 
+          <div className="cart__total">
+            <p className="cart__total-price">
+              Total commande : <span className="book__price-tag">{state.totalCart}€</span>
+            </p>
+            <p className="cart__total-price">
+              Total commande après remise : <span className="book__price-tag">{bestOffer}€</span>
+            </p>
+          </div>
+          :
+          null
+        }
       </div>
   );
 };

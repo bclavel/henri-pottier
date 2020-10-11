@@ -1,12 +1,7 @@
-import { SET_BOOKS_LIST, SET_SELECTED_BOOKS, ADD_ORDER_CART, REMOVE_ORDER_CART } from "../types/types.js";
+import { SET_BOOKS_LIST, ADD_ORDER_CART, REMOVE_ORDER_CART } from "../types/types.js";
 
 export default (state, action) => {
   switch (action.type) {
-    // case SET_SELECTED_BOOKS:
-    //   return {
-    //     ...state,
-    //     selectedBooks: action.payload
-    //   };
       case SET_BOOKS_LIST:
         return {
           ...state,

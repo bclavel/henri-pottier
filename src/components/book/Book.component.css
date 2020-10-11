@@ -34,7 +34,7 @@
     overflow: hidden;
 }
 
-.book__price, .book__quantity {
+.book__price, .book__quantity, .book__confirm {
     font-size: 14px;
     margin: 0
 }
@@ -56,4 +56,10 @@
     border: none;
     padding: 10px;
     margin: 10px 0;
+}
+
+.book__confirm {
+    color: #264653;
+    font-weight: 700;
+    height: 20px;
 }
